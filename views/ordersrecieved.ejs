@@ -1,0 +1,29 @@
+<%- include('login/partials/header') %>
+    <nav>
+        <ul class="ul">
+            <li class="merchant-item-list"><a class="merchant-alist" href="/ordersrecieved"> Orders Recieved</a></li>
+            <li class="merchant-item-list"><a class="merchant-alist" href="/merchant">Add Item</a></li>
+            <li class="merchant-item-list"><a class="merchant-alist" href="/clearorders">Clear Orders</a></li>
+            <li class="merchant-item-list"><a class="merchant-alist" href=""> Logout</a></li>
+        </ul>
+    </nav>
+    <div class="cont" style="width: 80vw; margin-top: 5px;">
+        <% if(array != null){ %>
+        <%for(let i=0;i< array.length;i++){%>
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%=array[i].date%></h5>
+              <p class="card-text"><%=array[i].data%></p>
+            </div>
+          </div>
+          <%}%>
+        <%}%>
+    </div>
+    <script>
+        let alertofmerchant = document.getElementById("alertofdelete");
+        function fun() {
+            alertofmerchant.style.display = "none";
+        }
+        setTimeout(fun, 2500);
+    </script>
+    <%- include('login/partials/footer') %>

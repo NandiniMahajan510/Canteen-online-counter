@@ -1,0 +1,40 @@
+<%- include('login/partials/header') %>
+<nav class="navbar">
+    <div>
+        <ul id="nav-list-items">
+          <li><a href="/">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+    <div class="conatiner-fluid" id ="checkoutcontainer">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Item-Name</th>
+            <th scope="col">Item-Quantity</th>
+            <th scope="col">Item-price</th>
+            <th scope="col">Total-price</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% items.forEach((item)=>{ %>
+                <tr>
+                  <td><%=item.productName%></td>
+                  <td><%=item.productQuantity%></td>
+                  <td><%=item.productPrice%></td>
+                  <td><%=item.productPrice*item.productQuantity%></td>
+                </tr>
+            <% })  %>
+        </tbody>
+        <tr><td colspan = '4' class = "text-right font-weight-bold">Total Price :<%=totalamount%></td></tr>`
+      </table>
+      <form action="/payamount" method="post" id = "paybillform">
+        <input type="text"name = "totalprice" id = "paybillforminput"value = "<%=totalamount%>"style = "display:none;">
+        <input type="text"name = "ordersent" value = '<%=order%>' style="display:none;" id = "orderid">
+        <button type="submit"  class="btn btn-success my-2" onclick="localStorage.clear()">Pay-Bill</button>
+      </form>
+    </div>
+
+    <script src="js/index.js"></script>
+        
+<%- include('login/partials/footer') %>
